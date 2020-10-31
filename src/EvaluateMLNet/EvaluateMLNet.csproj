@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Copyright>Paul Michaels</Copyright>
+    <Authors>Paul Michaels</Authors>
+    <Description>Evaluate the result of ML.Net against a set of data</Description>
   </PropertyGroup>
 
   <ItemGroup>
