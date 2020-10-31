@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EvaluateMLNet
 {
-    public class RunEvaluation
+    public class RunEvaluation : IRunEvaluation
     {
         /// <summary>
         /// Analyse the machine learning result        

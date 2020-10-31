@@ -7,8 +7,8 @@ namespace EvaluateMLNet
 {
     public interface IRunEvaluation
     {
-        public ResultStats RunFloat<TInputType>(string sampleFile, string predictionFieldName,
-            Func<TInputType, float> Prediction, float accuracy) where TInputType : class;
+        public ResultStats Run<TInputType, TPredictionType>(string sampleFile, string predictionFieldName,
+            Func<TInputType, TPredictionType> Prediction, float accuracy) where TInputType : class;
 
     }
 }

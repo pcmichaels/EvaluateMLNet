@@ -15,6 +15,5 @@ namespace EvaluateMLNet.Test
                 "home_team_red_cards", (a) => 6, 2);
 
         }
-
     }
 }
