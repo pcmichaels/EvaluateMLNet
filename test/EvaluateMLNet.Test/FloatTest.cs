@@ -12,8 +12,20 @@ namespace EvaluateMLNet.Test
         {
             var runEvaluation = new RunEvaluation();
             var resultStats = runEvaluation.Run<Stats, int>("Data/england-premier-league-matches-2018-to-2019-stats.csv",
-                "home_team_red_cards", (a) => 6, 2);
+                "home_team_yellow_cards", (a) => 2, 0);
 
+            Assert.Equal(107, resultStats.SuccessCount);
         }
+
+        [Fact]
+        public void CorrectlyEvaluatesResults_Accuracy()
+        {
+            var runEvaluation = new RunEvaluation();
+            var resultStats = runEvaluation.Run<Stats, int>("Data/england-premier-league-matches-2018-to-2019-stats.csv",
+                "home_team_yellow_cards", (a) => 2, 1);
+
+            Assert.Equal(272, resultStats.SuccessCount);
+        }
+
     }
 }

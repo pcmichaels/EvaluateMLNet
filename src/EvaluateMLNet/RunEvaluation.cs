@@ -15,9 +15,14 @@ namespace EvaluateMLNet
         /// <typeparam name="TInputType"></typeparam>
         /// <typeparam name="TPrediction"></typeparam>
         /// <param name="sampleFile"></param>
-        /// <param name="predictionFieldName">
+        /// <param name="predictionFieldName">       
         /// Name of the field that you are trying to predict
         /// Must be a float, or convertable to one
+        /// </param>
+        /// <param name="accuracy">
+        /// Where this is zero, a successful prediction will only be counted as such
+        /// if the prediction is within the same integer (e.g. 1.2 will be a success between 
+        /// 1 and 2); where the value is 1, the success would be between 0 and 3, and so forth
         /// </param>
         /// <returns></returns>
         public ResultStats Run<TInputType, TPredictionType>(string sampleFile, string predictionFieldName,
@@ -42,8 +47,8 @@ namespace EvaluateMLNet
                 var predictedValue = Prediction(sampleData);
 
                 decimal predictedValueDec = (decimal)Convert.ChangeType(predictedValue, typeof(decimal));
-                int low = (int)Math.Floor(predictedValueDec);
-                int high = (int)Math.Ceiling(predictedValueDec);
+                int low = (int)Math.Floor(predictedValueDec - (decimal)accuracy);
+                int high = (int)Math.Ceiling(predictedValueDec + (decimal)accuracy);
 
                 if (TestRange<TPredictionType>(result, low, high))
                 {
